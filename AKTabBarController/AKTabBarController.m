@@ -307,7 +307,9 @@ typedef enum {
 			[selectedViewController viewDidAppear:NO];
 		}
         
-        [tabBar setSelectedTab:(tabBar.tabs)[selectedIndex]];
+        if (selectedIndex < tabBar.tabs.count) {
+            [tabBar setSelectedTab:(tabBar.tabs)[selectedIndex]];
+        }
     }
 }
 
