@@ -121,22 +121,6 @@ static int kTopEdgeWidth   = 1;
         CGContextFillRect(ctx, CGRectMake(0, 0, rect.size.width, kTopEdgeWidth));
     }
     CGContextRestoreGState(ctx);
-    
-    // Drawing the top bright emboss
-    CGContextSaveGState(ctx);
-    {
-        CGContextSetBlendMode(ctx, kCGBlendModeOverlay);
-        CGContextSetRGBFillColor(ctx, 0.9, 0.9, 0.9, 0.7);
-        CGContextFillRect(ctx, CGRectMake(0, 1, rect.size.width, 1));
-
-    }
-    CGContextRestoreGState(ctx);
-        
-    // Drawing the edge border lines
-    CGContextSetFillColorWithColor(ctx, _edgeColor ? [_edgeColor CGColor] : [[UIColor colorWithRed:.1f green:.1f blue:.1f alpha:.8f] CGColor]);
-    for (AKTab *tab in _tabs)
-        CGContextFillRect(ctx, CGRectMake(tab.frame.origin.x - kInterTabMargin, kTopEdgeWidth, kInterTabMargin, rect.size.height));
-    
 }
 
 - (void)layoutSubviews {
