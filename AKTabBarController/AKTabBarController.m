@@ -168,6 +168,24 @@ typedef enum {
     return _selectedTabColors ? @[(id)[_selectedTabColors[0] CGColor], (id)[_selectedTabColors[1] CGColor]] : nil;
 }
 
+- (void)setTabColors:(NSArray *)tabColors {
+    _tabColors = tabColors;
+    [[tabBarView tabBar] setTabColors:[self tabCGColors]];
+    [tabBar setNeedsLayout];
+    [tabBar setNeedsDisplay];
+}
+
+- (void)setSelectedTabColors:(NSArray *)selectedTabColors {
+    _selectedTabColors = selectedTabColors;
+    for (AKTab *tab in tabBar.tabs) {
+        [tab setTabSelectedColors:[self selectedTabCGColors]];
+        [tab setNeedsLayout];
+        [tab setNeedsDisplay];
+    }
+    [tabBar setNeedsLayout];
+    [tabBar setNeedsDisplay];
+}
+
 #pragma - UINavigationControllerDelegate
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
