@@ -28,11 +28,8 @@
 
 @protocol AKTabBarControllerDelegate <NSObject>
 
-- (BOOL)akTabBarController:(AKTabBarController *)aTabBarController shouldSelectItemAtIndex:(NSInteger)index;
-
-@required
-
 - (void)akTabBarController:(AKTabBarController *)aTabBarController didSelectItemAtIndex:(NSInteger)index;
+- (BOOL)akTabBarController:(AKTabBarController *)aTabBarController shouldSelectItemAtIndex:(NSInteger)index;
 
 @end
 
