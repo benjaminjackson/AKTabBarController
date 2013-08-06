@@ -350,6 +350,10 @@ typedef enum {
 
 - (void)tabBar:(AKTabBar *)AKTabBarDelegate didSelectTabAtIndex:(NSInteger)index
 {
+    if ([self.delegate respondsToSelector:@selector(akTabBarController:shouldSelectItemAtIndex:)] && ![self.delegate akTabBarController:self shouldSelectItemAtIndex:index]) {
+        return;
+    }
+
     UIViewController *vc = (self.viewControllers)[index];
     
     if (self.selectedViewController == vc)
@@ -361,6 +365,9 @@ typedef enum {
     {
         [[self navigationItem] setTitle:[vc title]];
         self.selectedViewController = vc;
+        if ([self.delegate respondsToSelector:@selector(akTabBarController:didSelectItemAtIndex:)]) {
+            [self.delegate akTabBarController:self didSelectItemAtIndex:index];
+        }
     }
 }
 
