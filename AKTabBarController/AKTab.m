@@ -32,7 +32,7 @@ static const float kPadding = 4.0;
 static const float kMargin = 2.0;
 
 // Margin at the top
-static const float kTopMargin = 2.0;
+static const float kTopMargin = 0;
 
 @interface AKTab ()
 
@@ -152,7 +152,7 @@ static const float kTopMargin = 2.0;
         
         // When the image is not square we have to make sure it will not go beyond the bonds of the container
         if (CGRectGetWidth(imageRect) >= CGRectGetHeight(imageRect)) {
-            imageRect.size.width = MIN(CGRectGetHeight(imageRect), MIN(CGRectGetWidth(imageContainer), CGRectGetHeight(imageContainer)));
+            imageRect.size.width = MIN(CGRectGetWidth(imageRect), MIN(CGRectGetWidth(imageContainer), CGRectGetHeight(imageContainer)));
             imageRect.size.height = floorf(CGRectGetWidth(imageRect) / ratio);
         } else {
             imageRect.size.height = MIN(CGRectGetHeight(imageRect), MIN(CGRectGetWidth(imageContainer), CGRectGetHeight(imageContainer)));
