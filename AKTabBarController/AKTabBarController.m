@@ -222,7 +222,7 @@ typedef enum {
     }
     
     tabBar.hidden = NO;
-    tabBar.transform = CGAffineTransformMakeTranslation(CGRectGetWidth(self.view.bounds) * directionVector, 0);
+    tabBar.transform = CGAffineTransformMakeTranslation(CGRectGetHeight(self.view.bounds) * directionVector, 0);
     // when the tabbarview is resized we can see the view behind
     
     [UIView animateWithDuration:((animated) ? kPushAnimationDuration : 0) animations:^{
@@ -255,7 +255,7 @@ typedef enum {
     tabBarView.contentView.frame = tmpTabBarView;
     
     [UIView animateWithDuration:((animated) ? kPushAnimationDuration : 0) animations:^{
-        tabBar.transform = CGAffineTransformMakeTranslation(CGRectGetWidth(self.view.bounds) * directionVector, 0);
+        tabBar.transform = CGAffineTransformMakeTranslation(CGRectGetHeight(self.view.bounds) * directionVector, 0);
     } completion:^(BOOL finished) {
         tabBar.hidden = YES;
         tabBar.transform = CGAffineTransformIdentity;
